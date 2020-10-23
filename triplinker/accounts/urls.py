@@ -69,7 +69,7 @@ detail_profile_api_url = r'trip-linker-api/detail-profile/' \
 rest_api_patterns = [
     path('api-auth/', include('rest_framework.urls'),
          name='rest_framework'),
-    re_path(r'(detail|profile|detail-profile)/(?P<user_id>\d+)/?',
+    re_path(r'api/(detail|profile|detail-profile)/(?P<user_id>\d+)/?',
             views.TLAccountDetail.as_view(),
             name='detail-profile-api')
 ]

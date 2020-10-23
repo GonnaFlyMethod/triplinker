@@ -1,5 +1,5 @@
 # Django modules.
-from django.urls import path
+from django.urls import path, re_path
 
 # !Triplinker modules:
 
@@ -24,3 +24,11 @@ urlpatterns = [
     path('favourite/<int:place_id>/', views.favourite_api,
          name="favourite"),
 ]
+
+# Rest Api
+rest_api_patterns = [
+    re_path(r'api/trip-place-detail/(?P<place_id>\d+)/?',
+            views.TripPlaceDetail.as_view(), name='detail-trip-place-api')
+]
+
+urlpatterns += rest_api_patterns

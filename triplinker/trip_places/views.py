@@ -7,7 +7,14 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404
 
+# Django Rest Framework
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 # !Triplinker modules:
+
+# Rest Api.
+from .serializers import TripPlaceDetailSerializer
 
 # Another apps modules.
 from accounts.models.TLAccount_frequest import TLAccount
@@ -267,3 +274,12 @@ def favourite_api(request, place_id):
         'status': follow,
     }
     return JsonResponse(context, safe=False)
+
+
+# Rest API
+class TripPlaceDetail(APIView):
+
+    def get(self, request, place_id):
+        place = Place.objects.get(id=place_id)
+        serializer = TripPlaceDetailSerializer(place)
+        return Response(serializer.data)

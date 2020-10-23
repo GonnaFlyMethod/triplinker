@@ -20,3 +20,4 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns.append(path('debug/', include(debug_toolbar.urls)))
+    urlpatterns.append(path('api-auth/', include('rest_framework.urls')))
