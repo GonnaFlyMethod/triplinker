@@ -1,0 +1,111 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Triplinker</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <!--- accounts app [START] --->
+  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/all_users_list.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/profile_head.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/comment_section.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/profile_feed.css'%}">
+
+  <!--- Notification bell [END] --->
+  <script type="text/javascript" src="{% static 'accounts/js/comments.js'%}"></script>
+  <!--- accounts app [END] --->
+
+  <!--- chat app [START] --->
+  <link rel="stylesheet" type="text/css" href="{% static 'chat/css/all_messages_page.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'chat/css/messages_dialog.css'%}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'chat/css/message_error.css'%}">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!--- chat app [END] --->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"crossorigin="anonymous">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  {% block css %}
+  {% endblock %}
+
+  {% block additional_links%}
+  {% endblock%}
+
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'accounts:feed' %}" class="navbar-brand">Triplinker</a>
+      {% else %}
+      <span class="navbar-brand">Triplinker</span>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'accounts:profile' %}"><h5 style="display:inline;"><i class="fa fa-user" aria-hidden="true"></i></h5> Profile</a>
+
+            {% if new_messages %}
+              <a class="nav-item nav-link" href="{% url 'chat:messages-page' %}"><h5 style="display:inline;"><i class="fa fa-comments" aria-hidden="true"></i></h5> Messages <span style = 'color:white;background-color: #d15b47!important;' class="badge badge-important">{{number_of_new_messages}}</span></a>
+            {% else %}
+              <a class="nav-item nav-link" href="{% url 'chat:messages-page' %}"><h5 style="display:inline;"><i class="fa fa-comments" aria-hidden="true"></i></h5> Messages</a>
+            {% endif %}
+
+            <a class="nav-item nav-link" href="{% url 'accounts:feed' %}"><h5 style="display:inline;"><i class="fa fa-globe" aria-hidden="true"></i></h5> Feed</a>
+            <a class="nav-item nav-link" href="{% url 'accounts:all_users_list' %}"><h5 style="display:inline;"><i class="fa fa-users" aria-hidden="true"></i></h5> People</a>
+
+            <a class="nav-item nav-link" href="{% url 'trip_places:all-places' %}"><h5 style="display:inline;"><i class="fa fa-map-marker" aria-hidden="true"></i></h5> Places</a>
+            <a class="nav-item nav-link" href="{% url 'recommendations:all-recommendations' %}"><h5 style="display:inline;"><i class="fa fa-suitcase" aria-hidden="true"></i></h5> Recommendations</a>
+            <a class="nav-item nav-link {% if user not in user.notifications.last.is_seen.all %} text-danger {% endif %}" href="{% url 'feed:notifications' %}"><h5 style="display:inline;"><i class="fa fa-bell" aria-hidden="true"></i></h5> Notifications</a>
+          {% else %}
+            <a class="nav-item nav-link" href="{% url 'accounts:login' %}">login</a>
+            <a class="nav-item nav-link" href="{% url 'accounts:signup' %}">signup</a>
+          {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+        <form class="form-inline ml-auto" action="{% url 'accounts:all_users_list' %}" method="get">
+          <input class="form-control mr-sm-2" type="search" aria-label="Search" name="q" placeholder="Search...">
+          <button class="btn btn-outline-light my-sm-0" type="submit">Search</button>
+        </form>
+        {% endif %}
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      {% block jQuery %}{% endblock %}
+  })
+  </script>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        {% block main %}
+        {% endblock %}
+      </div>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  {% block javascript %}
+  {% endblock %}
+</body>
+</html>

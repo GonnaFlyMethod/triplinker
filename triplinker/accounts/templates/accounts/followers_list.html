@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<div class="container">
+  {% if user_acc.email == who_makes_a_request %}
+  <h1 class="mt-2">Your followers</h1>
+  {% else %}
+	<h1 class="mt-2">Followers of {{ user_acc.first_name }}</h1>
+  {% endif %}
+    <div class="row">
+      <div class="col-md-8">
+        <div class="people-nearby">
+          {% if not followers and user_acc.email == who_makes_a_request %}
+            <p>Your list of followers is empty</p>
+
+          {% elif not followers and user_acc.email != who_makes_a_request %}
+            <p>This user doesn't have followers</p>
+
+          {% else %}
+   			    {% for follower in followers %}
+              <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    {% if follower.get_avatar.all.first.profile_image %}
+                      <img src="{{follower.get_avatar.all.first.profile_image.url}}" alt="user" class="profile-photo-lg">
+                    {% else %}
+                      <img src="https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" alt="user" class="profile-photo-lg">
+                    {% endif %}
+                    
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                    <h5><a href="{% url 'accounts:detail_profile' follower.id %}" class="profile-link">{{ follower.email }}</a></h5>
+                    <p>{{follower.hobbies}}</p>
+                    <p class="text-muted">500m away</p>
+                  </div>
+              </div>    
+        </div>
+        {% endfor %}
+        {% endif %} 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

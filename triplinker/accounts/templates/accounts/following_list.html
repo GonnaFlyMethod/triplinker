@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<div class="container">
+  {% if user_acc.email == who_makes_a_request %}
+  <h1 class="mt-2">The people that you follow </h1>
+  {% else %}
+	<h1 class="mt-2">The people that {{ user_acc.first_name }} follows</h1>
+  {% endif %}
+    <div class="row">
+      <div class="col-md-8">
+        <div class="people-nearby">
+          {% if not following_users and user_acc.email == who_makes_a_request %}
+            <p>You don't follow anyone</p>
+
+          {% elif not following_users and user_acc.email != who_makes_a_request %}
+            <p>This user doesn't follow anyone</p>
+
+          {% else %}
+   			    {% for following_user in following_users %}
+              <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    {% if following_user.get_avatar.all.first.profile_image %}
+                      <img src="{{ following_user.get_avatar.all.first.profile_image.url}}" alt="user-avatar" class="profile-photo-lg">
+                    {% else %}
+                      <img src="https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" alt="default-user-avatar" class="profile-photo-lg">
+                    {% endif %}
+                    
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                    <h5><a href="{% url 'accounts:detail_profile' following_user.id %}" class="profile-link">{{ following_user.email }}</a></h5>
+                    <p>{{following_user.hobbies}}</p>
+                    <p class="text-muted">500m away</p>
+                  </div>
+                  {% if user_acc.email == who_makes_a_request %}
+                  <div class="col-md-3 col-sm-3">
+                    <a href="{% url 'accounts:unfollow' following_user.id%}">
+                    <button class="btn btn-danger pull-right">Unfollow</button>
+                    </a>
+                  </div>
+                  {% endif %}
+              </div>    
+        </div>
+        {% endfor %}
+        {% endif %}  
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
