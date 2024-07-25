@@ -3,6 +3,35 @@
 [![Build Status](https://travis-ci.org/GonnaFlyMethod/triplinker.svg?branch=master)](https://travis-ci.org/github/triplinker/triplinker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/triplinker/triplinker/blob/master/LICENSE)
 
+Triplinker is the social network for travelers. It allows you to find new friends, create trips, 
+share your experience with others and many more
+
+## Functionality
+### Profile
+![profile functionality](./assets/profile.png)
+
+### People
+![people functionality](./assets/people.png)
+
+### Friend requests
+![friend requests functionality](./assets/friend_requests.png)
+
+### Direct Messages
+![direct messages functionality](./assets/messages.png)
+
+### Chatting
+![chatting functionality](./assets/chatting.gif)
+
+### Group chats
+![group chats functionality](./assets/group_chats.png)
+![group chats functionality](./assets/group_chats_opened.png)
+
+### Places
+![places functionality](./assets/places.png)
+
+### Journeys
+![journeys functionality](./assets/journeys.png)
+
 ---
 
 ## Getting Started
