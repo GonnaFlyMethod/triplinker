@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/triplinker/triplinker/blob/master/LICENSE)
 
 Triplinker is the social network for travelers. It allows you to find new friends, create trips, 
-share your experience with others and many more
+share your experience with others and many more. (reupload of the code from 2020)
 
 ## Functionality
 ### Profile
