@@ -39,7 +39,7 @@
                         {% if avatar %}
                         <img class="rounded-circle" src="{{ avatar.profile_image.url }}" alt="avatar" width="110" height="120">
                         {% else %}
-                        <img class="rounded-circle" src="https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" alt="avatar" width="110" height="120">
+                        <img class="rounded-circle" src="{% static 'accounts/images/default-avatar.png' %}" alt="avatar" width="110" height="120">
                         {% endif %}
                     </div>
                 </a>

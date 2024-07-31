@@ -57,12 +57,6 @@ def test_reg_form_hobbies_field_label(form):
     assert (form.fields['hobbies'].label == 'Hobbies' or
         form.fields['hobbies'].label == None)
 
-
-def test_reg_form_vkontakte_field_label(form):
-    assert (form.fields['vkontakte'].label == 'VKontakte' or
-        form.fields['vkontakte'].label == None)
-
-
 def test_reg_form_twitter_field_label(form):
     assert (form.fields['twitter'].label == 'Twitter' or
         form.fields['twitter'].label == None)
@@ -109,11 +103,6 @@ def test_reg_form_hobbies_field_help_text(form):
 		'and interests!')
 
 
-def test_reg_form_vkontakte_field_help_text(form):
-	assert (form.fields['vkontakte'].help_text == 'Here you can place a link ' + 
-		'to your Vkontakte profile')
-
-
 def test_reg_form_twitter_field_help_text(form):
 	assert (form.fields['twitter'].help_text == "Do you have a Twitter " + 
 		"account? That's a good opportunity to insert a link to your profile " +
@@ -133,7 +122,7 @@ def test_clean_first_name_equals_second_name():
 		'email':'adam@example',
 		'sex':'M',
 		'date_of_birth':'1992-01-16',
-		'country':'BY',
+		'country':'US',
 		'password1':'topSecret123',
 		'password2':'topSecret123',
 	}
@@ -149,7 +138,7 @@ def test_clean_first_name_method():
 		'email':'adam@example',
 		'sex':'M',
 		'date_of_birth':'1992-01-16',
-		'country':'BY',
+		'country':'US',
 		'password1':'topSecret123',
 		'password2':'topSecret123',
 	}
@@ -163,7 +152,7 @@ def test_clean_first_name_method():
 		'email':'adam@example',
 		'sex':'M',
 		'date_of_birth':'1992-01-16',
-		'country':'BY',
+		'country':'US',
 		'password1':'topSecret123',
 		'password2':'topSecret123',
 	}
@@ -179,7 +168,7 @@ def test_clean_second_name_method():
 		'email':'adam@example',
 		'sex':'M',
 		'date_of_birth':'1992-01-16',
-		'country':'BY',
+		'country':'US',
 		'password1':'topSecret123',
 		'password2':'topSecret123',
 	}
@@ -193,7 +182,7 @@ def test_clean_second_name_method():
 		'email':'adam@example',
 		'sex':'M',
 		'date_of_birth':'1992-01-16',
-		'country':'BY',
+		'country':'US',
 		'password1':'topSecret123',
 		'password2':'topSecret123',
 	}

@@ -118,7 +118,7 @@ First name: Name
 Second name: Surname
 Sex: M
 Date of birth: 2000-10-12
-Country: BY
+Country: US
 Password: secret
 ```
 
@@ -132,10 +132,10 @@ Sex: M
 For example, if you write **F** here, then it will mean **Female**.
 
 ```
-Country: BY
+Country: US
 ```
 
-**BY** means **Belarus**. That's just the Alpha-2 code for the country.
+**US** means **The United States**. That's just the Alpha-2 code for the country.
 
 ### Run Celery
 
@@ -163,18 +163,16 @@ MAILHOG=on
 
 ## Running the tests
 
+Grant the user `test` to create DBs:
+```
+ALTER USER test CREATEDB;;
+```
+
 When you get to the directory 'triplinker/triplinker' just run the command:
 
 ```
 pytest tests
 ```
-
-then:
-
-```
-python3 manage.py test
-```
-to run django's tests
 
 ## License
 

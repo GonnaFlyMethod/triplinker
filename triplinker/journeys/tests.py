@@ -18,7 +18,7 @@ class TestJourneysViews(TestCase):
         self.user_1 = TLAccount.objects.create_user(first_name='John', 
                                    second_name='Li', 
                                    email='john@test.com', sex='M', 
-                                   date_of_birth='2000-10-12', country='BY',
+                                   date_of_birth='2000-10-12', country='US',
                                    password='secret')
         self.client_user_1 = Client()
         self.client_user_1.login(username='john@test.com', password='secret')

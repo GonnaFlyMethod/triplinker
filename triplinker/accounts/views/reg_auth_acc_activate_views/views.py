@@ -49,7 +49,7 @@ class ActivateView(views.FormView):
     """Gives to user the opportunity of adding some information for his acc:
        first_name, second_name, sex, date_of_birth, country, qualities,
        can_get_message_from, place_of_work, hobbies, motto, short_description,
-       vkontakte twitter and facebook.
+       twitter and facebook.
     """
     form_class = AccountActivationForm
     success_url = reverse_lazy('accounts:feed')

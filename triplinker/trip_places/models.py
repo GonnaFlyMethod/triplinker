@@ -18,7 +18,6 @@ class Place(models.Model):
     ]
 
     LOCATION = [
-        ("BY", "Belarus"),
         ("US", "United States of America"),
         ("CH", "China")
     ]
