@@ -35,7 +35,7 @@ class TLAccount(AbstractBaseUser, PermissionsMixin):
     Model contains basic fields which are connected with user's info
     This is key model for Post and Comment models.
     """
-    COUNTRIES = [("BY", "Belarus")]
+    COUNTRIES = [("US", "United States")]
 
     SEX_CHOICES = [
         ("M", "Male"),
@@ -69,7 +69,6 @@ class TLAccount(AbstractBaseUser, PermissionsMixin):
     motto = models.CharField("Motto", max_length=62, blank=True, null=True)
 
     # Social networks links
-    vkontakte = models.URLField(verbose_name="VKontakte", blank=True, null=True)
     twitter = models.URLField(verbose_name="Twitter", blank=True, null=True)
     facebook = models.URLField(verbose_name="Facebook", blank=True, null=True)
 

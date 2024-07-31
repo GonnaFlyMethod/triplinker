@@ -45,7 +45,7 @@ class TLAccountAdmin(admin.ModelAdmin):
 
         ('Social networks', {
             'fields':
-                ('vkontakte', 'twitter', 'facebook',)
+                ('twitter', 'facebook',)
         }
          ),
 
