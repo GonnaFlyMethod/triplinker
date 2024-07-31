@@ -10,6 +10,10 @@ share your experience with others and many more. (reupload of the code from 2020
 ### Profile
 ![profile functionality](./assets/profile.png)
 
+### Feed
+![profile functionality | feed](./assets/feed.png)
+
+
 ### People
 ![people functionality](./assets/people.png)
 
