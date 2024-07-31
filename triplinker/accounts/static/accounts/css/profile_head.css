@@ -2,9 +2,10 @@ body{
     margin-top:20px;
     background:#eee;
 }
+
 .db-social .jumbotron {
     margin: 0;
-    background: url(https://wallup.net/wp-content/uploads/2016/03/10/319802-landscape-nature-lake-mountain-snow-reflection-stars-evening-moon-clouds-moonlight-New_Zealand.jpg);
+    background: url(../images/boat.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
