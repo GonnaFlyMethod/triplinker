@@ -165,7 +165,7 @@ MAILHOG=on
 
 Grant the user `test` to create DBs:
 ```
-ALTER USER test CREATEDB;;
+ALTER USER test CREATEDB;
 ```
 
 When you get to the directory 'triplinker/triplinker' just run the command:
